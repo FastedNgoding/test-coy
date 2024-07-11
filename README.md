@@ -1,3 +1,5 @@
+### - Pastikan Sudah menginstall nodejs
+
 ```bash
 npm init -y
 ```
